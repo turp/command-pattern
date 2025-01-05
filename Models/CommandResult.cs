@@ -5,6 +5,17 @@ namespace Models;
 
 public class CommandResult
 {
+    private bool _success;
+    private string _message;
+    private readonly ICommand command;
+
+    public CommandResult(ICommand command)
+    {
+        this.command = command;
+    }
+
+    public string Name => $"{command.Code}: {command.Description}";
+
     public bool Success
     {
         get
@@ -18,8 +29,7 @@ public class CommandResult
             _success = value;
         }
     }
-    private bool _success;
-    private string _message;
+
     public string Message
     {
         get

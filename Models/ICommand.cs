@@ -1,6 +1,8 @@
 namespace Models;
 
-public interface ICommand
+public abstract class ICommand(string code, string description)
 {
-    CommandResult Execute();
+    public string Code { get; private set; } = code;
+    public string Description { get; private set; } = description;
+    public abstract CommandResult Execute();
 }

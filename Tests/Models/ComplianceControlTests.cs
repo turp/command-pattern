@@ -9,6 +9,10 @@ public class ComplianceControlTests
 {
     private class TestCommand : ComplianceControl
     {
+        public TestCommand() : base("TEST-CONTROL", "Test control description")
+        {
+        }
+
         public new void AddChild(ICommand child)
         {
             base.AddChild(child);
@@ -20,7 +24,7 @@ public class ComplianceControlTests
         private readonly bool _shouldSucceed;
         private readonly string _message;
 
-        public TestComplianceCheck(bool shouldSucceed = true, string message = "")
+        public TestComplianceCheck(bool shouldSucceed = true, string message = "") : base("TEST-CHECK", "Facilisis praesent efficitur faucibus efficitur cursus fermentum dui")
         {
             _shouldSucceed = shouldSucceed;
             _message = message;
@@ -28,7 +32,7 @@ public class ComplianceControlTests
 
         public override CommandResult Execute()
         {
-            return new CommandResult
+            return new CommandResult(this)
             {
                 Success = _shouldSucceed,
                 Message = _message

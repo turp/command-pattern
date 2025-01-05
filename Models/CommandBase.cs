@@ -4,6 +4,7 @@ namespace Models;
 
 public abstract class ComplianceControl : ICommand
 {
+    public ComplianceControl(string code, string description) : base(code, description) {}
     private readonly List<ICommand> _children = [];
 
     protected void AddChild(ICommand command)
@@ -11,9 +12,10 @@ public abstract class ComplianceControl : ICommand
         _children.Add(command);
     }
 
-    public CommandResult Execute()
+    public override CommandResult Execute()
     {
-        var result = new CommandResult();
+        var result = new CommandResult(this);
+
         foreach (var command in _children)
         {
             var childResult = command.Execute();
@@ -25,5 +27,7 @@ public abstract class ComplianceControl : ICommand
 
 public abstract class ComplianceCheck : ICommand
 {
-    public abstract CommandResult Execute();
+    protected ComplianceCheck(string code, string description): base(code, description)
+    {
+    }
 }

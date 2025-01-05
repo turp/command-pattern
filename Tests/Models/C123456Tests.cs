@@ -12,7 +12,7 @@ public class C123456Tests
     public void C123456_AllServicesReturnSuccess_ReturnsSuccessMessage()
     {
         // Arrange
-        var jiraServiceMock = new Mock<IJiraServce>();
+        var jiraServiceMock = new Mock<IJiraService>();
         var assetServiceMock = new Mock<IAssetService>();
 
         jiraServiceMock.Setup(s => s.GetTicket("123456")).Returns(new JiraTicket());
@@ -32,7 +32,7 @@ public class C123456Tests
     public void C123456_JiraServiceFails_ReturnsFailureMessage()
     {
         // Arrange
-        var jiraServiceMock = new Mock<IJiraServce>();
+        var jiraServiceMock = new Mock<IJiraService>();
         var assetServiceMock = new Mock<IAssetService>();
 
         jiraServiceMock.Setup(s => s.GetTicket("123456")).Returns((JiraTicket)null);
@@ -52,7 +52,7 @@ public class C123456Tests
     public void C123456_AssetServiceFails_ReturnsFailureMessage()
     {
         // Arrange
-        var jiraServiceMock = new Mock<IJiraServce>();
+        var jiraServiceMock = new Mock<IJiraService>();
         var assetServiceMock = new Mock<IAssetService>();
 
         jiraServiceMock.Setup(s => s.GetTicket("123456")).Returns(new JiraTicket());
