@@ -6,7 +6,6 @@ namespace Services.Reflection;
 
 public static class ServiceExtensions
 {
-
 	public static void RegisterServices(this IServiceCollection services)
 	{
 		var scopedService = typeof(ScopedServiceAttribute);
